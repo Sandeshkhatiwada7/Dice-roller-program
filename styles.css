@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Outfit:wght@400;500;600&display=swap');
+
+:root{
+  --felt-dark:#062015;
+  --felt:#0d253b;
+  --felt-light:#124a38;
+  --gold:#d4af37;
+  --gold-bright:#f0d078;
+  --gold-dim:#8a6e2f;
+  --ivory:#f6efe0;
+  --ivory-dim:#cbbfa2;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'Outfit', sans-serif;
+  background:radial-gradient(circle at 50% 0%, var(--felt-light) 0%, var(--felt) 45%, var(--felt-dark) 100%);
+  padding:32px;
+}
+
+#container{
+  position:relative;
+  width:100%;
+  max-width:420px;
+  padding:48px 40px 40px;
+  border-radius:22px;
+  background:
+    repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.015) 0 2px, transparent 2px 14px),
+    linear-gradient(160deg, var(--felt-light), var(--felt) 55%, var(--felt-dark));
+  border:1px solid var(--gold-dim);
+  outline:1px solid rgba(212,175,55,0.15);
+  outline-offset:-6px;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.08) inset,
+    0 0 0 1px rgba(0,0,0,0.4),
+    0 30px 60px -20px rgba(0,0,0,0.75),
+    0 15px 30px -15px rgba(0,0,0,0.6),
+    0 0 40px rgba(212,175,55,0.08);
+  text-align:center;
+}
+
+#container::before{
+  content:'';
+  position:absolute;
+  top:14px; left:14px; right:14px; bottom:14px;
+  border:1px solid rgba(212,175,55,0.35);
+  border-radius:14px;
+  pointer-events:none;
+}
+
+h1{
+  margin:0 0 6px;
+  font-family:'Playfair Display', serif;
+  font-weight:900;
+  font-size:2.1rem;
+  letter-spacing:0.03em;
+  color:var(--gold-bright);
+  text-shadow:0 2px 0 rgba(0,0,0,0.5), 0 0 18px rgba(212,175,55,0.25);
+}
+
+h1::after{
+  content:'';
+  display:block;
+  width:64px;
+  height:2px;
+  margin:14px auto 26px;
+  background:linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+label{
+  display:block;
+  font-size:0.75rem;
+  text-transform:uppercase;
+  letter-spacing:0.14em;
+  color:var(--ivory-dim);
+  margin-bottom:10px;
+}
+
+#dice{
+  width:100px;
+  padding:10px 12px;
+  font-family:'Outfit', sans-serif;
+  font-size:1.1rem;
+  font-weight:600;
+  text-align:center;
+  color:var(--ivory);
+  background:rgba(0,0,0,0.25);
+  border:1px solid var(--gold-dim);
+  border-radius:8px;
+  outline:none;
+  transition:border-color 0.2s, box-shadow 0.2s;
+}
+
+#dice:focus{
+  border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(212,175,55,0.15);
+}
+
+button{
+  display:block;
+  margin:22px auto 0;
+  padding:13px 34px;
+  font-family:'Outfit', sans-serif;
+  font-weight:600;
+  font-size:0.95rem;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  color:#2a1e05;
+  background:linear-gradient(180deg, var(--gold-bright), var(--gold) 60%, var(--gold-dim));
+  border:none;
+  border-radius:999px;
+  cursor:pointer;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.6) inset,
+    0 -2px 4px rgba(0,0,0,0.25) inset,
+    0 10px 20px -8px rgba(0,0,0,0.6);
+  transition:transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+button:hover{
+  transform:translateY(-2px);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.6) inset,
+    0 -2px 4px rgba(0,0,0,0.25) inset,
+    0 14px 24px -8px rgba(0,0,0,0.65);
+}
+
+button:active{
+  transform:translateY(0px) scale(0.97);
+}
+
+#diceresult{
+  margin-top:24px;
+  min-height:1.2em;
+  font-size:0.85rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--ivory-dim);
+  font-weight:600;
+}
+
+#diceimages{
+  margin-top:18px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  justify-content:center;
+  min-height:64px;
+}
+
+#diceimages img{
+  width:58px;
+  height:58px;
+  object-fit:contain;
+  border-radius:12px;
+  background:linear-gradient(155deg, #ffffff, var(--ivory) 60%, #e4d9bf);
+  padding:8px;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.9) inset,
+    0 -3px 4px rgba(0,0,0,0.12) inset,
+    0 8px 14px -4px rgba(0,0,0,0.5),
+    0 2px 0 var(--gold-dim);
+  animation:tumble 0.5s ease;
+}
+
+@keyframes tumble{
+  0%{ transform:rotate(-25deg) scale(0.4); opacity:0; }
+  60%{ transform:rotate(12deg) scale(1.08); opacity:1; }
+  100%{ transform:rotate(0deg) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  #diceimages img{ animation:none; }
+}
+
+@media (max-width:420px){
+  #container{ padding:36px 22px 28px; }
+  h1{ font-size:1.7rem; }
+}
